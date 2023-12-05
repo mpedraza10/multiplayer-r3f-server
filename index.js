@@ -44,6 +44,14 @@ io.on("connection", (socket) => {
 		io.emit("characters", characters);
 	});
 
+	// Function for chat messages
+	socket.on("chatMessage", (message) => {
+		io.emit("playerChatMessage", {
+			id: socket.id,
+			message,
+		});
+	});
+
 	socket.on("disconnect", () => {
 		console.log("User disconnected!");
 
